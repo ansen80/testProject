@@ -39,9 +39,9 @@ public class Pobeda {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.dp-1vzfy35-root-root:nth-of-type(2)"))).click();
 
         //Проверка наличия нужных элементов
-        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Ticket search')]"))).isDisplayed());
-        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Online check-in')]"))).isDisplayed());
-        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Manage my booking')]"))).isDisplayed());
+        Assert.assertTrue(wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[contains(text(), 'Ticket search')]"), "Ticket search")));
+        Assert.assertTrue(wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[contains(text(), 'Online check-in')]"), "Online check-in")));
+        Assert.assertTrue(wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[contains(text(), 'Manage my booking')]"), "Manage my booking")));
     }
 
     @After
