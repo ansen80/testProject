@@ -1,4 +1,4 @@
-package PobedaTests02;
+/*package PobedaTests02;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -27,4 +27,4 @@ public class PobedaPage {
     public void scrollToElement(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
-}
+}*/
