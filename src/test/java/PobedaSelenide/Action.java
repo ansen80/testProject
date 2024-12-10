@@ -20,34 +20,28 @@ public class Action {
         return title().equals(expectedTitle);
     }
 
-    //Наличие логотипа
     public boolean isLogoDisplayed() {
         return logo.isDisplayed();
     }
 
-    //Клик на Управление бронированием
     public void clickManageBooking() {
         manageBookingLink.click();
     }
 
-    //Копки видны на странице
     public boolean areBookingFieldsVisible() {
         return lastNameField.isDisplayed() && bookingNumberField.isDisplayed() && searchButton.isDisplayed();
     }
 
-    //Ввод данных и клик поиск
     public void searchBooking(String lastName, String bookingNumber) {
         lastNameField.setValue(lastName);
         bookingNumberField.setValue(bookingNumber);
         searchButton.click();
     }
 
-    //Ждем новое окно
     public void waitForWindow() {
         switchTo().window(1);
     }
 
-    //Новое окно
     public void switchToNewWindow() {
         switchTo().window(1); //Переключаемся на новое окно
     }

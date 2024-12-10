@@ -18,15 +18,11 @@ public class PobedaTest {
         Selenide.open("https://www.pobeda.aero");
         action = new Action();
     }
-
     @Test
     public void testManageBooking() {
-
         String expectedTitle = "Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками";
         Assert.assertTrue("Текст заголовка страницы некорректен", action.isPageTitleCorrect(expectedTitle));
-
         Assert.assertTrue("Логотип Победы не отображается", action.isLogoDisplayed());
-
         action.clickManageBooking();
         Assert.assertTrue("Не отображаются поля для ввода на странице управления бронированием",
                 action.areBookingFieldsVisible());
