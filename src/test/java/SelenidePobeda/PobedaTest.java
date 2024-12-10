@@ -1,4 +1,4 @@
-package PobedaSelenide01;
+package SelenidePobeda;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;

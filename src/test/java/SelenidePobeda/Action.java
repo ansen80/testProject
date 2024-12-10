@@ -1,4 +1,4 @@
-package PobedaSelenide01;
+package SelenidePobeda;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
