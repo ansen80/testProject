@@ -44,6 +44,9 @@ public class PobedaTest {
         Assert.assertTrue("Блок с поиском билетов не отображается.", action.isSearchBlockVisible());
     }
 
+
+    //TODO Нужно добавить клики на даты отправления и обранто
+    //TODO Метод enterSearchCriteria работает правильно
     @Test
     public void testSearchFunctionality() {
         //Вводим города
@@ -59,7 +62,7 @@ public class PobedaTest {
         action.enterSearchCriteriaForClean("Москва", "Санкт-Петербург");
 
         //Клик
-        action.clickSearchButtonForTestRedButton();
+        action.clickSearchButton();
         //Проверяем красный бордер
         action.isDateFromFieldHighlighted();
     }

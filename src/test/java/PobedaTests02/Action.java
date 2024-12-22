@@ -33,6 +33,11 @@ public class Action {
     @FindBy(css = "div[class='dp-1y916xi-root-root-root']")
     WebElement searchButton;
 
+    @FindBy(xpath = "//div[@data-popper-placement='bottom-start']//button[1]")
+    WebElement searchResultButton;
+
+
+
     public Action(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -55,19 +60,22 @@ public class Action {
 
     //Заполнение полей с предварительной чисткой
     public void enterSearchCriteria(String from, String to) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
         //Откуда
         fromField.clear();
-        fromField.sendKeys(Keys.CONTROL + "a");
-        fromField.sendKeys(Keys.DELETE);
+        fromField.click();
         fromField.sendKeys(from);
-        fromField.sendKeys(Keys.ENTER);
+        wait.until(ExpectedConditions.elementToBeClickable(searchResultButton));
+        searchResultButton.click();
+
 
         //Куда
         toField.clear();
-        toField.sendKeys(Keys.CONTROL + "a");
-        toField.sendKeys(Keys.DELETE);
+        toField.click();
         toField.sendKeys(to);
-        toField.sendKeys(Keys.ENTER);
+        wait.until(ExpectedConditions.elementToBeClickable(searchResultButton));
+        searchResultButton.click();
     }
 
     //Клик на поиск
@@ -83,13 +91,7 @@ public class Action {
         fromField.sendKeys(Keys.CONTROL + "a");
         fromField.sendKeys(Keys.DELETE);
         fromField.sendKeys(from);
-        fromField.sendKeys(Keys.ENTER); }
-
-    //Клик на Поиск
-    public void clickSearchButtonForTestRedButton() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
-        searchButton.click();
+        fromField.sendKeys(Keys.ENTER);
     }
 
     //Проверка, что поле Куда с красной обводкой
