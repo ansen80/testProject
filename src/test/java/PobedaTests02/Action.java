@@ -15,19 +15,14 @@ public class Action {
 
     @FindBy(xpath = "//div[@class=\"dp-1x07rlv-lottie\"]")
     WebElement logo;
-
     @FindBy(xpath = "(//input[@placeholder=\"Откуда\"])[1]")
     WebElement fromField;
-
     @FindBy(xpath = "(//input[@placeholder=\"Куда\"])[1]")
     WebElement toField;
-
     @FindBy(xpath = "(//input[@placeholder=\"Туда\"])[1]")
     WebElement dateFromField;
-
     @FindBy(xpath = "( //input[@placeholder=\"Обратно\"])[1]")
     WebElement dateBackField;
-
     @FindBy(xpath = "(//span[@class='dp-wjta0n-root'])[1]")
     WebElement searchButton;
 

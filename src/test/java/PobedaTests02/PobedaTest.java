@@ -21,7 +21,6 @@ public class PobedaTest {
         driver.get("https://www.pobeda.aero");
         action = new Action(driver);
     }
-
     @Test
     public void testWebsiteOpenedSuccessfully() {
         //Переход к блоку поиска
@@ -33,7 +32,6 @@ public class PobedaTest {
         //Тест Логотипа на видимость
         Assert.assertTrue("Логотип Победы не отображается.", action.isLogoDisplayed());
     }
-
     @Test
     public void testSearchBlockVisible() {
         //Переход к блоку поиска
@@ -42,10 +40,6 @@ public class PobedaTest {
         //Блок с полями отображается
         Assert.assertTrue("Блок с поиском билетов не отображается.", action.isSearchBlockVisible());
     }
-
-
-    //TODO Нужно добавить клики на даты отправления и обранто
-    //TODO Метод enterSearchCriteria работает правильно
     @Test
     public void testSearchFunctionality() {
         //Переход к блоку поиска
@@ -55,7 +49,6 @@ public class PobedaTest {
         //Клик
         action.clickSearchButton();
     }
-
     @Test
     public void enterSearchCriteriaForCleanForRedBotton() {
         //Переход к блоку поиска
@@ -65,7 +58,6 @@ public class PobedaTest {
         //Проверяем красный бордер
         action.isDateFromFieldHighlighted();
     }
-
     @After
     public void tearDown() {
         if (driver != null) {
