@@ -1,9 +1,6 @@
 package PobedaTests02;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,29 +11,25 @@ import java.time.Duration;
 public class Action {
 
     WebDriver driver;
+    WebDriverWait wait;
 
-    @FindBy(css = "img[src*=\"logo-rus-white\"]")
+    @FindBy(xpath = "//div[@class=\"dp-1x07rlv-lottie\"]")
     WebElement logo;
 
-    @FindBy(css = "input.dp-1mh0xcc-root-control[placeholder=\"Откуда\"]")
+    @FindBy(xpath = "(//input[@placeholder=\"Откуда\"])[1]")
     WebElement fromField;
 
-    @FindBy(css = "input.dp-1mh0xcc-root-control[placeholder=\"Куда\"]")
+    @FindBy(xpath = "(//input[@placeholder=\"Куда\"])[1]")
     WebElement toField;
 
-    @FindBy(css = "input.dp-1mh0xcc-root-control[placeholder=\"Туда\"][data-empty=\"true\"]")
+    @FindBy(xpath = "(//input[@placeholder=\"Туда\"])[1]")
     WebElement dateFromField;
 
-    @FindBy(css = "input.dp-1mh0xcc-root-control[placeholder=\"Обратно\"][data-empty=\"true\"]")
+    @FindBy(xpath = "( //input[@placeholder=\"Обратно\"])[1]")
     WebElement dateBackField;
 
-    @FindBy(css = "div[class='dp-1y916xi-root-root-root']")
+    @FindBy(xpath = "(//span[@class='dp-wjta0n-root'])[1]")
     WebElement searchButton;
-
-    @FindBy(xpath = "//div[@data-popper-placement='bottom-start']//button[1]")
-    WebElement searchResultButton;
-
-
 
     public Action(WebDriver driver) {
         this.driver = driver;
@@ -66,16 +59,16 @@ public class Action {
         fromField.clear();
         fromField.click();
         fromField.sendKeys(from);
-        wait.until(ExpectedConditions.elementToBeClickable(searchResultButton));
-        searchResultButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+        searchButton.click();
 
 
         //Куда
         toField.clear();
         toField.click();
         toField.sendKeys(to);
-        wait.until(ExpectedConditions.elementToBeClickable(searchResultButton));
-        searchResultButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+        searchButton.click();
     }
 
     //Клик на поиск
@@ -83,15 +76,6 @@ public class Action {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
-    }
-
-    public void enterSearchCriteriaForClean(String from, String to) {
-        //Тест для красной обводки. Нужно сперва все удалить и нажать Поиск
-        fromField.clear();
-        fromField.sendKeys(Keys.CONTROL + "a");
-        fromField.sendKeys(Keys.DELETE);
-        fromField.sendKeys(from);
-        fromField.sendKeys(Keys.ENTER);
     }
 
     //Проверка, что поле Куда с красной обводкой
@@ -111,5 +95,6 @@ public class Action {
         }
     }
 }
+
 
 

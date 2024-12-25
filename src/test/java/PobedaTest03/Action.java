@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 public class Action {
@@ -61,7 +62,7 @@ public class Action {
     }
 
     //Вводим данные и нажимаем кнопку поиск
-    public void searchBooking( String lastName, String bookingNumber) {
+    public void searchBooking(String lastName, String bookingNumber) {
         lastNameField.sendKeys(lastName);
         bookingNumberField.sendKeys(bookingNumber);
         searchButton.click();

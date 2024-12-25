@@ -37,6 +37,7 @@ public class LoginPage {
 
     /**
      * Метод для ав оризации на сайте Guru99
+     *
      * @param strUserName
      * @param strPassword
      * @return

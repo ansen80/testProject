@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -41,15 +40,15 @@ public class GoogleSearch {
         driver.findElement(By.cssSelector("[aria-label=\"Найти\"]")).sendKeys(Keys.ENTER);
 
 
-
         driver.findElement(By.cssSelector("svg[viewBox=\"0 0 92 30\"]")).isDisplayed();
 
         Assert.assertEquals(driver.findElement(By.cssSelector("[aria-label=\"Найти\"]")).getText(), "Очень странные дела");
         Assert.assertEquals(driver.getTitle(), "Очень странные дела - Поиск в Google");
 
     }
+
     @After
-    public void tearDown( ){
+    public void tearDown() {
         driver.quit();
-   }
+    }
 }

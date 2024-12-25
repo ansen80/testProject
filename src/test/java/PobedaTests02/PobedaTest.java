@@ -1,9 +1,6 @@
 package PobedaTests02;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -27,6 +24,8 @@ public class PobedaTest {
 
     @Test
     public void testWebsiteOpenedSuccessfully() {
+        //Переход к блоку поиска
+        action.scrollToElement(action.fromField);
         //Тест Заголовка
         String expectedTitle = "Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками";
         Assert.assertEquals("Неверный заголовок страницы.", expectedTitle, action.getPageTitle());
@@ -49,18 +48,18 @@ public class PobedaTest {
     //TODO Метод enterSearchCriteria работает правильно
     @Test
     public void testSearchFunctionality() {
+        //Переход к блоку поиска
+        action.scrollToElement(action.fromField);
         //Вводим города
         action.enterSearchCriteria("Москва", "Санкт-Петербург");
-
         //Клик
         action.clickSearchButton();
     }
 
     @Test
     public void enterSearchCriteriaForCleanForRedBotton() {
-        //Вводим города
-        action.enterSearchCriteriaForClean("Москва", "Санкт-Петербург");
-
+        //Переход к блоку поиска
+        action.scrollToElement(action.fromField);
         //Клик
         action.clickSearchButton();
         //Проверяем красный бордер
@@ -74,4 +73,5 @@ public class PobedaTest {
         }
     }
 }
+
 

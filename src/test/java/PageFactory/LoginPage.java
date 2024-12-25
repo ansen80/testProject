@@ -1,6 +1,5 @@
 package PageFactory;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,10 +44,12 @@ public class LoginPage {
 
     //Получаем заголовок страницы логина
     public String getLoginTitle() {
-        return titleText.getText(); }
+        return titleText.getText();
+    }
 
     /**
      * Метод для ав оризации на сайте Guru99
+     *
      * @param strUserName
      * @param strPassword
      * @return

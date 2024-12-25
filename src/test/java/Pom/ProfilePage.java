@@ -14,8 +14,9 @@ public class ProfilePage {
         this.driver = driver;
 
     }
+
     //Получаем имя юзера с домашней страницы
-    public String getHomePageDashboardUserName(){
+    public String getHomePageDashboardUserName() {
         return driver.findElement(userName).getText();
     }
 }
