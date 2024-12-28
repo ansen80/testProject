@@ -1,6 +1,7 @@
 package PobedaTest03;
 
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,21 +16,16 @@ public class Action {
 
     WebDriver driver;
 
-    @FindBy(css = "img[src*='logo-rus-white']")
+    @FindBy(xpath = "//div[@class=\"dp-1x07rlv-lottie\"]")
     WebElement logo;
-
     @FindBy(xpath = "//button[.//div[text()='Управление бронированием']]")
     WebElement manageBookingLink;
-
     @FindBy(xpath = "//input[@placeholder='Фамилия клиента']")
     WebElement lastNameField;
-
     @FindBy(xpath = "//input[@placeholder='Номер бронирования или билета']")
     WebElement bookingNumberField;
-
     @FindBy(xpath = "//button[@type='submit']")
     WebElement searchButton;
-
     @FindBy(xpath = "//div[@ng-if=\"vm.errorMessage\"]")
     WebElement errorMessage;
 
@@ -39,8 +35,8 @@ public class Action {
     }
 
     //Заголовок страницы
-    public boolean isPageTitleCorrect(String expectedTitle) {
-        return driver.getTitle().equals(expectedTitle);
+    public String getPageTitle() {
+        return driver.getTitle();
     }
 
     //Наличие логотипа
@@ -85,21 +81,19 @@ public class Action {
         }
     }
 
-
-    //Проверяем наличие ошибки в новом окне
-    public boolean isErrorMessageDisplayed() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        try {
-            WebElement error = wait.until(ExpectedConditions.visibilityOf(errorMessage));
-            return error.isDisplayed();
-        } catch (TimeoutException e) {
-            return false;
-        }
+    // Метод для проверки текста ошибки
+    public String checkErrorMessage() {
+        return errorMessage.getText();
     }
 
-    // Метод для проверки текста ошибки
-    public void checkErrorMessage() {
-        String actualErrorMessage = errorMessage.getText();
-        Assert.assertTrue(actualErrorMessage.toLowerCase().contains("Заказ с указанными параметрами не найден"));
+    //Прокрутка к поиску
+    public void scrollToElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }

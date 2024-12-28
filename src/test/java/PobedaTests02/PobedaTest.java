@@ -52,7 +52,7 @@ public class PobedaTest {
     @Test
     public void enterSearchCriteriaForCleanForRedBotton() {
         //Переход к блоку поиска
-        action.scrollToElement(action.fromField);
+        action.scrollToElement(action.searchButton);
         //Клик
         action.clickSearchButton();
         //Проверяем красный бордер

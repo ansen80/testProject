@@ -26,11 +26,21 @@ public class PobedaTest {
 
     @Test
     public void testManageBooking() {
-        //Открытия сайта
-        Assert.assertTrue("Текст заголовка страницы некорректен",
-                action.isPageTitleCorrect("Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками"));
-        Assert.assertTrue("Логотип Победы не отображается", action.isLogoDisplayed());
+        //Переход к блоку поиска
+        action.scrollToElement(action.logo);
+        //Тест Заголовка
+        String expectedTitle = "Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками";
+        Assert.assertEquals("Неверный заголовок страницы.", expectedTitle, action.getPageTitle());
 
+        //Тест Логотипа на видимость
+        Assert.assertTrue("Логотип Победы не отображается.", action.isLogoDisplayed());
+    }
+
+    @Test
+    public void testManageDataEntry() {
+
+        //Переход к блоку поиска
+        action.scrollToElement(action.manageBookingLink);
         //Клик на управление бронью
         action.clickManageBooking();
 
@@ -48,7 +58,8 @@ public class PobedaTest {
         action.switchToNewWindow();
 
         //Проверяем что сообщение отображается
-        Assert.assertTrue("Сообщение об ошибке не отображается", action.isErrorMessageDisplayed());
+        String expectedTitle = "Заказ с указанными параметрами не найден";
+        Assert.assertEquals("Неверный заголовок страницы.", expectedTitle, action.checkErrorMessage());
     }
 }
 
